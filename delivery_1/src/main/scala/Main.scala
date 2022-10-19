@@ -1,7 +1,12 @@
 class Task1 {
 
   def A(): Unit = {
-    print("Task 1A: \n")
+    println("Task 1A")
+    var nums: List[Int] = List()
+    for (n <- 1 to 50){
+      nums = nums :+ n
+    }
+    println(nums)
   }
 
   def B(): Unit = {
