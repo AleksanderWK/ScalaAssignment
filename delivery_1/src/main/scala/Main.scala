@@ -9,8 +9,19 @@ class Task1 {
     println(nums)
   }
 
+  def sum(list: List[Int]): Int = {
+    var sum: Int = 0
+
+    for (item <- list) {
+      sum += item
+    }
+
+    sum
+  }
+  
   def B(): Unit = {
-    print("Task 1B: \n")
+    println("Task 1B:")
+    println(sum(List(1, 2, 3)))
   }
 
   def recursiveSum(list: List[Int], accSum: Int): Int = list match {
@@ -19,6 +30,7 @@ class Task1 {
   } 
 
   def C(): Unit = {
+    println("Task 1C:")
     val test: List[Int] = List(1, 2, 3)
     println(recursiveSum(test, 0))
   }
@@ -40,19 +52,19 @@ class Task1 {
 class Task2() {
 
   def A(): Unit = {
-    print("Task 2A: \n")
+    println("Task 2A:")
   }
 
   def B(): Unit = {
-    print("Task 2B: \n")
+    println("Task 2B:")
   }
 
   def C(): Unit = {
-    print("Task 2C: \n")
+    println("Task 2C:")
   }
 
   def D(): Unit = {
-    print("Task 2D: \n")
+    println("Task 2D:")
   }
 }
 
