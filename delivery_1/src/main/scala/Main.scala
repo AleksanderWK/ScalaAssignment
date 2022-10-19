@@ -133,6 +133,15 @@ class Task2() {
 
   def d(): Unit = {
     println("Task 2D:")
+
+    lazy val x: String = {
+      val t = makeConcurrent(() => { println(x) })
+      t.start()
+      t.join()
+      "Never printed, because of a deadlock"
+    }
+
+    println(x)
   }
 }
 
@@ -140,13 +149,13 @@ class Task2() {
 object Main extends App {
   val task1 = new Task1
   val task2 = new Task2
-  // task1.a()
-  // task1.b()
-  // task1.c()
-  // task1.d()
+  task1.a()
+  task1.b()
+  task1.c()
+  task1.d()
   task2.a()
   task2.b()
   task2.c()
-  // task2.d()
+  task2.d()
 
 }
