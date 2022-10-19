@@ -145,7 +145,6 @@ class Task2() {
   }
 }
 
-
 object Main extends App {
   val task1 = new Task1
   val task2 = new Task2
@@ -157,5 +156,4 @@ object Main extends App {
   task2.b()
   task2.c()
   task2.d()
-
 }
