@@ -23,8 +23,17 @@ class Task1 {
     println(recursiveSum(test, 0))
   }
 
+  def recursiveFib(n: Int, prev: Int = 1, prevprev: Int = 0): Int = {
+    n match {
+      case 0 => 0
+      case 1 => prev
+      case _ => recursiveFib(n-1, prev + prevprev, prev)
+    }
+  } 
+
   def D(): Unit = {
-    print("Task 1D: \n")
+    println("Task 1D:")
+    println(recursiveFib(5))
   }
 }
 
