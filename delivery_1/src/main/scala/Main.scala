@@ -1,38 +1,49 @@
 class Task1 {
 
   def A(): Unit = {
-    print("Task 1A: \n")
+    println("Task 1A:")
+  }
+
+  def sum(list: List[Int]): Int = {
+    var sum: Int = 0
+
+    for (item <- list) {
+      sum += item
+    }
+
+    sum
   }
 
   def B(): Unit = {
-    print("Task 1B: \n")
+    println("Task 1B:")
+    println(sum(List(1, 2, 3)))
   }
 
   def C(): Unit = {
-    print("Task 1C: \n")
+    println("Task 1C:")
   }
 
   def D(): Unit = {
-    print("Task 1D: \n")
+    println("Task 1D:")
   }
 }
 
 class Task2() {
 
   def A(): Unit = {
-    print("Task 2A: \n")
+    println("Task 2A:")
   }
 
   def B(): Unit = {
-    print("Task 2B: \n")
+    println("Task 2B:")
   }
 
   def C(): Unit = {
-    print("Task 2C: \n")
+    println("Task 2C:")
   }
 
   def D(): Unit = {
-    print("Task 2D: \n")
+    println("Task 2D:")
   }
 }
 
