@@ -58,8 +58,20 @@ class Task1 {
 
 class Task2() {
 
-  def A(): Unit = {
-    println("Task 2A:")
+  def helloWorld(): Unit = {
+    println("HelloWorld!")
+  }
+
+  def makeConcurrent(func: () => Unit): Thread = {
+      new Thread(new Runnable {
+        def run(): Unit = {
+          func()
+        }
+      })
+    }
+
+  def A() = {
+    makeConcurrent(helloWorld).start()
   }
 
   def B(): Unit = {
