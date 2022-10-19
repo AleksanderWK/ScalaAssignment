@@ -1,6 +1,6 @@
 class Task1 {
 
-  def A(): Unit = {
+  def a(): Unit = {
     println("Task 1A:")
 
     var nums: List[Int] = List()
@@ -12,7 +12,7 @@ class Task1 {
     println(nums)
   }
   
-  def B(): Unit = {
+  def b(): Unit = {
     println("Task 1B:")
 
     def sum(list: List[Int]): Int = {
@@ -28,7 +28,7 @@ class Task1 {
     println(sum(List(1, 2, 3)))
   }
 
-  def C(): Unit = {
+  def c(): Unit = {
     println("Task 1C:")
 
     def recursiveSum(list: List[Int], accSum: Int = 0): Int = {
@@ -41,7 +41,7 @@ class Task1 {
     println(recursiveSum(List(1, 2, 3)))
   }
 
-  def D(): Unit = {
+  def d(): Unit = {
     println("Task 1D:")
 
     def recursiveFib(n: Int, prev: BigInt = 1, prevPrev: BigInt = 0): BigInt = {
@@ -58,31 +58,80 @@ class Task1 {
 
 class Task2() {
 
-  def helloWorld(): Unit = {
-    println("HelloWorld!")
-  }
-
   def makeConcurrent(func: () => Unit): Thread = {
-      new Thread(new Runnable {
-        def run(): Unit = {
+      new Thread {
+        override def run() = {
           func()
         }
-      })
+      }
     }
 
-  def A() = {
-    makeConcurrent(helloWorld).start()
+  def a() = {
+    println("Task 2A:")
+
+    def helloWorld(): Unit = {
+      println("Hello World!")
+    }
+
+    val hello = makeConcurrent(helloWorld)
+
+    hello.start()
+    hello.join()
   }
 
-  def B(): Unit = {
+  def b(): Unit = {
     println("Task 2B:")
+
+    var counter: Int = 0
+
+    def increaseCounter(): Unit = {
+      counter += 1
+    }
+
+    def printCounter(): Unit = {
+      println(counter)
+    }
+
+    val a = makeConcurrent(increaseCounter)
+    val b = makeConcurrent(increaseCounter)
+    val c = makeConcurrent(printCounter)
+
+    a.start()
+    b.start()
+    c.start()
+
+    a.join()
+    b.join()
+    c.join()
   }
 
-  def C(): Unit = {
+  def c(): Unit = {
     println("Task 2C:")
+
+    var counter: Int = 0
+
+    def increaseCounter(): Unit = this.synchronized {
+      counter += 1
+    }
+
+    def printCounter(): Unit = {
+      println(counter)
+    }
+
+    val a = makeConcurrent(increaseCounter)
+    val b = makeConcurrent(increaseCounter)
+    val c = makeConcurrent(printCounter)
+
+    a.start()
+    b.start()
+    c.start()
+
+    a.join()
+    b.join()
+    c.join()
   }
 
-  def D(): Unit = {
+  def d(): Unit = {
     println("Task 2D:")
   }
 }
@@ -91,13 +140,13 @@ class Task2() {
 object Main extends App {
   val task1 = new Task1
   val task2 = new Task2
-  task1.A()
-  task1.B()
-  task1.C()
-  task1.D()
-  task2.A()
-  task2.B()
-  task2.C()
-  task2.D()
+  // task1.a()
+  // task1.b()
+  // task1.c()
+  // task1.d()
+  task2.a()
+  task2.b()
+  task2.c()
+  // task2.d()
 
 }
