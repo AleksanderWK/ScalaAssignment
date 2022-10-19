@@ -1,7 +1,12 @@
 class Task1 {
 
   def A(): Unit = {
-    println("Task 1A:")
+    println("Task 1A")
+    var nums: List[Int] = List()
+    for (n <- 1 to 50){
+      nums = nums :+ n
+    }
+    println(nums)
   }
 
   def sum(list: List[Int]): Int = {
@@ -13,14 +18,21 @@ class Task1 {
 
     sum
   }
-
+  
   def B(): Unit = {
     println("Task 1B:")
     println(sum(List(1, 2, 3)))
   }
 
+  def recursiveSum(list: List[Int], accSum: Int): Int = list match {
+    case Nil => accSum
+    case head :: tail => recursiveSum(tail, accSum + head)
+  } 
+
   def C(): Unit = {
     println("Task 1C:")
+    val test: List[Int] = List(1, 2, 3)
+    println(recursiveSum(test, 0))
   }
 
   def D(): Unit = {
